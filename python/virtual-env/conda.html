@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>conda</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="y3ip" id="conda">conda</h1><div class="md-section-divider"></div><h2 data-anchor-id="rb3p" id="conda-pyhton"><code>conda</code> <code>pyhton</code></h2><p data-anchor-id="tn3f"><div class="toc"><div class="toc">
+<ul>
+<li><a href="#conda">conda</a><ul>
+<li><a href="#conda-pyhton">conda pyhton</a></li>
+<li><a href="#1环境管理">1环境管理</a><ul>
+<li><a href="#11create-env">1.1create env</a></li>
+<li><a href="#12-list-envs">1.2 list envs</a></li>
+<li><a href="#13remove-an-environment">1.3Remove an environment</a></li>
+<li><a href="#14share-an-environment">1.4Share an environment</a></li>
+<li><a href="#15创建一个相同的环境">1.5创建一个相同的环境</a></li>
+<li><a href="#16saved-environment-variables">1.6Saved environment variables</a></li>
+</ul>
+</li>
+<li><a href="#2python管理">2Python管理</a><ul>
+<li><a href="#21check-python-versions">2.1Check Python versions</a></li>
+<li><a href="#22install-a-different-version-of-python">2.2Install a different version of Python</a></li>
+</ul>
+</li>
+<li><a href="#3安装包管理">3安装包管理</a><ul>
+<li><a href="#31list-all-packages">3.1List all packages</a></li>
+<li><a href="#32search-for-a-packag">3.2Search for a packag</a></li>
+<li><a href="#33install-a-package">3.3Install a package</a></li>
+<li><a href="#34package-update">3.4Package update</a></li>
+<li><a href="#35package-remove">3.5Package remove</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</p><div class="md-section-divider"></div><h2 data-anchor-id="k6lj" id="1环境管理">1环境管理</h2><div class="md-section-divider"></div><h3 data-anchor-id="5aqr" id="11create-env">1.1create env</h3><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="n09d"><ol class="linenums"><li class="L0"><code><span class="pln">conda create </span><span class="pun">--</span><span class="pln">name env_name</span></code></li></ol></pre><p data-anchor-id="kv1b">启动 <br>
+Linux, OS X: source activate env_name <br>
+Windows: activate env_name</p><p data-anchor-id="ycfg">关闭 <br>
+Linux, OS X: source deactivate <br>
+Windows: deactivate</p><div class="md-section-divider"></div><h3 data-anchor-id="2cbt" id="12-list-envs">1.2 list envs</h3><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="1e5x"><ol class="linenums"><li class="L0"><code><span class="pln">conda info </span><span class="pun">--</span><span class="pln">envs</span></code></li><li class="L1"><code><span class="pln">conda env list</span></code></li><li class="L2"><code><span class="pln">conda info </span><span class="pun">-</span><span class="pln">e</span></code></li></ol></pre><div class="md-section-divider"></div><h3 data-anchor-id="2bl3" id="13remove-an-environment">1.3Remove an environment</h3><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="dktd"><ol class="linenums"><li class="L0"><code><span class="pln">conda remove </span><span class="pun">--</span><span class="pln">name env_name </span><span class="pun">--</span><span class="pln">all</span></code></li></ol></pre><div class="md-section-divider"></div><h3 data-anchor-id="qafk" id="14share-an-environment">1.4Share an environment</h3><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="w760"><ol class="linenums"><li class="L0"><code><span class="pln">conda env </span><span class="kwd">export</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> environment</span><span class="pun">.</span><span class="pln">yml</span></code></li><li class="L1"><code><span class="com"># NOTE: 包含env所需的包.</span></code></li><li class="L2"><code><span class="com"># 创建另外一个包含这些包的env:</span></code></li><li class="L3"><code><span class="pln">conda env create </span><span class="pun">-</span><span class="pln">f environment</span><span class="pun">.</span><span class="pln">yml</span></code></li></ol></pre><div class="md-section-divider"></div><h3 data-anchor-id="dl3o" id="15创建一个相同的环境">1.5创建一个相同的环境</h3><p data-anchor-id="49jr">The command <code>conda list --explicit</code> produces a spec list  <br>
+The command <code>conda list --explicit &gt; spec-file.txt</code> creates a file containing this spec list in the current working directory.</p><div class="md-section-divider"></div><p data-anchor-id="gs05"><code>conda create --name MyEnvironment --file spec-file.txt</code>uses the spec file to create an identical environment on the same machine or another machine. <br>
+The command <code>conda install --name MyEnvironment --file spec-file.txt</code>adds these packages to an existing environment.</p><h3 data-anchor-id="g3pq" id="16saved-environment-variables">1.6Saved environment variables</h3><p data-anchor-id="cy19">We will write a script named <code>env_vars</code> to do this</p><h2 data-anchor-id="g9vk" id="2python管理">2Python管理</h2><h3 data-anchor-id="enzv" id="21check-python-versions">2.1Check Python versions</h3><blockquote data-anchor-id="29hl" class="white-blockquote">
+  <p>conda search python</p>
+</blockquote><h3 data-anchor-id="rln4" id="22install-a-different-version-of-python">2.2Install a different version of Python</h3><pre class="prettyprint linenums prettyprinted" data-anchor-id="25ak"><ol class="linenums"><li class="L0"><code><span class="pln">conda create </span><span class="pun">--</span><span class="pln">name env_name python</span><span class="pun">=</span><span class="lit">2.7</span></code></li></ol></pre><div class="md-section-divider"></div><h2 data-anchor-id="g5ju" id="3安装包管理">3安装包管理</h2><div class="md-section-divider"></div><h3 data-anchor-id="hetx" id="31list-all-packages">3.1List all packages</h3><blockquote data-anchor-id="fdpr" class="white-blockquote">
+  <p>conda list</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="207w" id="32search-for-a-packag">3.2Search for a packag</h3><blockquote data-anchor-id="2za8" class="white-blockquote">
+  <p>conda search package_name</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="cuxg" id="33install-a-package">3.3Install a package</h3><blockquote data-anchor-id="mn3s" class="white-blockquote">
+  <p>conda install --name env_name pack_name</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="1eft" id="34package-update">3.4Package update</h3><blockquote data-anchor-id="l9bo" class="white-blockquote">
+  <p>conda update packagen_name</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="aedd" id="35package-remove">3.5Package remove</h3><blockquote data-anchor-id="hef3" class="white-blockquote">
+  <p>conda remove --name env_name pack_name</p>
+</blockquote></div>
+</body>
+</html>
