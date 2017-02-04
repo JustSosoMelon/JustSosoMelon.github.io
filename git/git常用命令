@@ -5,12 +5,12 @@
   ● 你可以发现，Git会告诉你，git checkout -- file可以丢弃工作区的修改,就是让这个文件回到最近一次git commit或git add时的状态。
   ● Git同样告诉我们，用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区
   ● Git鼓励大量使用分支：
-查看分支：git branch
-创建分支：git branch <name>
-切换分支：git checkout <name>
-创建+切换分支：git checkout -b <name>
-合并某分支到当前分支：git merge <name>
-删除分支：git branch -d <name>
+  ● 查看分支：git branch
+  ● 创建分支：git branch <name>
+  ● 切换分支：git checkout <name>
+  ● 创建+切换分支：git checkout -b <name>
+  ● 合并某分支到当前分支：git merge <name>
+  ● 删除分支：git branch -d <name>
   ● git log --graph --pretty=oneline --abbrev-commit可以看到分支合并图。
   ● git merge feature1，可以看到冲突文件，需要手动编辑后再次add commit
 	Auto-merging readme.txt
