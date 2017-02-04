@@ -1,0 +1,23 @@
+1. gitlab建立项目
+2. 本地git clone远程项目
+3. git checkout -b new_feature建立新分支开发新功能
+4. 在新分支使用git add将工作区文件修改添加到stage区域， git commit将stage区域的内容提交到本地分支。
+5. 在新分支使用git checkout -- <filename>放弃工作区还未stage的工作（不可恢复）和git reset HEAD <filename>放弃stage的工作（unstage状态，不会从文件删除修改）
+6. 使用git log或git log --pretty=oneline查看提交历史
+7. 在提交历史中查看commit_id，如果需要回滚已提交的操作到指定commit_id的位置，使用git reset --hard commit_id, 使用git reset --hard HEAD^撤销本次提交，回到上一次提交的状态。
+8. 经常使用git status查看状态
+9. 提交前使用git diff查看提交的变更，使用git diff HEAD -- <filename>查看指定文件与版本库中最新版本的变更。
+10. new_feature分支开发测试完成后，切换到master分支，使用git pull将master更新到最新状态，使用git merge new_feature合并分支，如有conflict关键字，会指出冲突文件，手动编辑冲突后add and commit。
+11. git push -u origin master到远程master分支，如有冲突，push会失败，git fetch  origin master更新master，然后git merge origin/master, 处理冲突后再次add and commit，再次git push -u origin master，直到成功
+12. 联系开发小伙伴review最新push的代码，不通过可以在gitlab恢复到上一提交状态。
+13. 通过后使用git branch -d new_feature删除之前的功能分支
+14. git fetch  origin master更新master,git merge origin/master, 处理冲突后git checkout -b new_feature2进入下一个新功能的开发。
+15. 不要提交源代码，源配置，源测试需要文件以外的其他任何文件，如pyc,pyo,windows ide带来的各种文件，如果git status提示有这些文件的改动，需要修改ignore后再add，add commit之后的这些文件再要删除就会比较麻烦了。
+16. 使用git remote prune origin检测远程主机origin的分支，与其同步
+
+17. 如果git merge后有编辑冲突后重新commit到master，直接push到远程master，会造成一个feature在远程也有多次commit记录，不利于code review，因此需要合并提交。
+使用git log --pretty=format:"%h %s"查看提交记录，将最近一个pull之后的所有提交都合并，如有3个提交合并，运行
+git rebase -i HEAD~3 或 git rebase -i commit_id表示commit_id之后的所有分支合并
+pick最近一次提交，其余都改为squash，保存退出，即开始rebase，完成后会跳出一个文本框要求输入合并后分支的提交描述，输入后保存退出，即rebase完成，使用
+git log可以查看到提交记录的变更，合并后使用git push -u origin master推送到远程分支，有点类似gitlab发起的merge request。
+rebase有任何问题，使用git rebase --abort放弃rebase，千万不要push -f推到远程分支。
