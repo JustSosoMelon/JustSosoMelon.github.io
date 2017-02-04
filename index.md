@@ -16,7 +16,6 @@ personal blog github pages!
 ![cmd-markdown-logo](https://www.zybuluo.com/static/img/logo.png)
 
 除了您现在看到的这个 Cmd Markdown 在线版本，您还可以前往以下网址下载：
-<span id="section-1">
-### 第一章
-</span>
+
+### <span id="section-1">第一章</span>
 - [内容](technology/test.md)
