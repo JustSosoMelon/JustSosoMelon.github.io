@@ -1,0 +1,38 @@
+  ● HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+  ● 穿梭前，用git log / git log --pretty=oneline可以查看提交历史，以便确定要回退到哪个版本。
+  ● 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本
+  ● 提交后，用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别
+  ● 你可以发现，Git会告诉你，git checkout -- file可以丢弃工作区的修改,就是让这个文件回到最近一次git commit或git add时的状态。
+  ● Git同样告诉我们，用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区
+  ● Git鼓励大量使用分支：
+查看分支：git branch
+创建分支：git branch <name>
+切换分支：git checkout <name>
+创建+切换分支：git checkout -b <name>
+合并某分支到当前分支：git merge <name>
+删除分支：git branch -d <name>
+  ● git log --graph --pretty=oneline --abbrev-commit可以看到分支合并图。
+  ● git merge feature1，可以看到冲突文件，需要手动编辑后再次add commit
+	Auto-merging readme.txt
+	CONFLICT (content): Merge conflict in readme.txt
+	Automatic merge failed; fix conflicts and then commit the result
+  ● 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。git merge --no-ff -m "merge with no-ff" dev 准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward，因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。
+  ● 如果工作到一半要切到其他分支处理紧急工作，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。在需要储藏的分支git stash，git stash list即可以看到储藏记录，git stash pop，恢复储藏到工作区的同时把stash内容也删了。先用git stash list查看，然后恢复指定的stash，用命令：git stash apply stash@{0}，git stash drop stash@{0}
+  ● git pull失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：git branch --set-upstream dev origin/dev  Branch dev set up to track remote branch dev from origin.
+  ● 查看远程库信息，使用git remote -v；
+  ● 本地新建的分支如果不推送到远程，对其他人就是不可见的；
+  ● 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+  ● 在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+  ● 建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+  ● 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+  ● git push --delete origin serverfix 或git push origin :serverfix即删除指定远程分支
+  ● git push [远程名] [本地分支]:[远程分支] 语法，如果省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支],如果省略远程分支，即默认与本地分支名相同
+  ● 命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+  ● git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+  ● git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
+  ● 命令git tag可以查看所有标签。
+  ● 命令git push origin <tagname>可以推送一个本地标签；
+  ● 命令git push origin --tags可以推送全部未推送过的本地标签；
+  ● 命令git tag -d <tagname>可以删除一个本地标签；
+  ● 命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+  ● 有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被.gitignore忽略了，git add -f App.class可以无视.gitignore强制添加。要检测一个文件是否被.gitignore中某个规则ignore，使用$ git check-ignore -v App.class .gitignore:3:*.class    App.class，Git会告诉我们，.gitignore的第3行规则忽略了该文件，于是我们就可以知道应该修订哪个规则。
