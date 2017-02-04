@@ -1,3 +1,7 @@
+grok debug:
+http://grokdebug.herokuapp.com/
+
+
 USERNAME [a-zA-Z0-9._-]+  
 USER %{USERNAME}  
 EMAILLOCALPART [a-zA-Z][a-zA-Z0-9_.+-=:]+  
