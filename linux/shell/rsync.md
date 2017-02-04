@@ -22,12 +22,18 @@
 -c, --checksum 打开校验开关，强制对文件传输进行校验  
 -a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD  
 -r, --recursive 对子目录以递归模式处理  
+-l, --links 保留软链结  
+-p, --perms 保持文件权限  
+-g, --group 保持文件属组信息   
+-t, --times 保持文件时间信息  
+-o, --owner 保持文件属主信息
+-D, --devices 保持设备文件信息  
+-P --partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输   
 -R, --relative 使用相对路径信息  
 -b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为~filename。可以使用--suffix选项来指定不同的备份文件前缀。  
 --backup-dir 将备份文件(如~filename)存放在在目录下。  
 -suffix=SUFFIX 定义备份文件前缀  
 -u, --update 仅仅进行更新，也就是跳过所有已经存在于DST，并且文件时间晚于要备份的文件。(不覆盖更新的文件)  
--l, --links 保留软链结  
 -L, --copy-links 想对待常规文件一样处理软链结   
 --copy-unsafe-links 仅仅拷贝指向SRC路径目录树以外的链结  
 --safe-links 忽略指向SRC路径目录树以外的链结  
