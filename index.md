@@ -2,7 +2,7 @@
 personal blog github pages!
 
 ## 目录
-- [第一章](#section-1)
+- [第一章](#第一章)
 
 
 # 语法介绍及示例阐述
@@ -61,5 +61,6 @@ personal blog github pages!
 
 除了您现在看到的这个 Cmd Markdown 在线版本，您还可以前往以下网址下载：
 
-### <span id="section-1">第一章</span>
+### 第一章
 - [内容](technology/test.md)
+#### 第一章
