@@ -1,24 +1,6 @@
+
   
-  #Networking
-  1. USERNAME [a-zA-Z0-9._-]+
-  2. USER %{USERNAME}
-  3. EMAILLOCALPART [a-zA-Z][a-zA-Z0-9_.+-=:]+
-  4. EMAILADDRESS %{EMAILLOCALPART}@%{HOSTNAME}
-  5. INT (?:[+-]?(?:[0-9]+))
-  6. BASE10NUM (?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+)))
-  7. NUMBER (?:%{BASE10NUM})
-  8. BASE16NUM (?<![0-9A-Fa-f])(?:[+-]?(?:0x)?(?:[0-9A-Fa-f]+))
-  9. BASE16FLOAT \b(?<![0-9A-Fa-f.])(?:[+-]?(?:0x)?(?:(?:[0-9A-Fa-f]+(?:\.[0-9A-Fa-f]*)?)|(?:\.[0-9A-Fa-f]+)))\b
-  11. POSINT \b(?:[1-9][0-9]*)\b
-  12. NONNEGINT \b(?:[0-9]+)\b
-  13. WORD \b\w+\b
-  14. NOTSPACE \S+
-  15. SPACE \s*
-  16. DATA .*?
-  17. GREEDYDATA .*
-  18. QUOTEDSTRING (?>(?<!\\)(?>"(?>\\.|[^\\"]+)+"|""|(?>'(?>\\.|[^\\']+)+')|''|(?>`(?>\\.|[^\\`]+)+`)|``))
-  19. UUID [A-Fa-f0-9]{8}-(?:[A-Fa-f0-9]{4}-){3}[A-Fa-f0-9]{12}
-  20. # URN, allowing use of RFC 2141 section 2.3 reserved characters
+  ###URN, allowing use of RFC 2141 section 2.3 reserved characters
   21. URN urn:[0-9A-Za-z][0-9A-Za-z-]{0,31}:(?:%[0-9a-fA-F]{2}|[0-9A-Za-z()+,.:=@;$_!*'/?#-])+
   
   #Networking
